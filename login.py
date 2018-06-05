@@ -13,16 +13,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 
-from geetest_slider_crack import show_random_image, get_offset, gen_actions_and_perform, \
-    check_validate_success, reload_random_image
-
+from login_swjtu.geetest_slider_crack import *
 
 LOGIN_URL = 'http://dean.vatuu.com/service/login.html'
 
 
 class Browser(object):
 
-    def __init__(self, driver_path=None):
+    def __init__(self, driver_path="D:\\Webdriver\\chromedriver.exe"):
         option = Options()
         option.add_argument('--headless')
         try:
@@ -122,8 +120,9 @@ class LoginTest(unittest.TestCase):
         self.browser.on_exit()
 
     def testLogin(self):
-        data = {'username': '<your username>', 'password': '<your password>'}
+        # data = {'username': '2016112657', 'password': '58023U..'}
         res = self.browser.login(data)
-        res_json = json.loads(res.text)
+        res_json = json.dumps(res)
+        res_json = json.loads(res_json)
         self.assertEqual(1, res_json.get('status'), msg='login success')
         self.assertIsNotNone(res_json.get('JSESSIONID'), msg='got JSESSIONID')

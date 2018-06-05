@@ -12,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException, StaleElementReferenceException
 
+
 class text_to_be_present_in_element_attr(object):
     """
     An expectation for checking if the given text is present in the element's given attr

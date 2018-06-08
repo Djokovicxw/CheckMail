@@ -20,7 +20,7 @@ LOGIN_URL = 'http://dean.vatuu.com/service/login.html'
 
 class Browser(object):
 
-    def __init__(self, driver_path="D:\\Webdriver\\chromedriver.exe"):
+    def __init__(self, driver_path=""):
         option = Options()
         option.add_argument('--headless')
         try:
@@ -120,7 +120,7 @@ class LoginTest(unittest.TestCase):
         self.browser.on_exit()
 
     def testLogin(self):
-        # data = {'username': '2016112657', 'password': '58023U..'}
+        data = {'username': '', 'password': ''}
         res = self.browser.login(data)
         res_json = json.dumps(res)
         res_json = json.loads(res_json)
